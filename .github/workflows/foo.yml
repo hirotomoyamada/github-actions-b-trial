@@ -1,0 +1,19 @@
+name: Foo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  foo:
+    name: Foo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          ref: main
+
+      - name: Install
+        uses: ./.github/composite-actions/install

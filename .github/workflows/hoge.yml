@@ -1,0 +1,35 @@
+name: Hoge
+
+on: [workflow_dispatch]
+
+jobs:
+  hoge:
+    name: Hoge
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          ref: main
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Merge Changelog
+        run: |
+          git fetch origin repo-sync/yamada-ui/default
+          git merge --no-ff origin/repo-sync/yamada-ui/default -m "Merge repo-sync/yamada-ui/default branch"
+
+      - name: Create Fuga
+        run: pnpm hoge
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          base: main
+          delete-branch: true
+          commit-message: 'ci(hoge): ${{ github.sha }}'
+          title: 'Hoge'
+          branch: hoge
+          assignees: 'hirotomoyamada'

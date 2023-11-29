@@ -15,21 +15,21 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Merge File
-        run: |
-          git fetch origin repo-sync/github-actions-a-trial/default
-          git merge --no-ff origin/repo-sync/github-actions-a-trial/default -m "Merge repo-sync/github-actions-a-trial/default branch"
+      # - name: Merge File
+      #   run: |
+      #     git fetch origin repo-sync/github-actions-a-trial/default
+      #     git merge --no-ff origin/repo-sync/github-actions-a-trial/default -m "Merge repo-sync/github-actions-a-trial/default branch"
 
-      - name: Create Fuga
-        run: pnpm hoge
+      # - name: Create Fuga
+      #   run: pnpm hoge
 
-      - name: Create PR
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
-          base: main
-          delete-branch: true
-          commit-message: 'ci(hoge): ${{ github.sha }}'
-          title: 'Hoge'
-          branch: hoge
-          assignees: 'hirotomoyamada'
+      # - name: Create PR
+      #   uses: peter-evans/create-pull-request@v4
+      #   with:
+      #     token: ${{ secrets.PAT_TOKEN }}
+      #     base: main
+      #     delete-branch: true
+      #     commit-message: 'ci(hoge): ${{ github.sha }}'
+      #     title: 'Hoge'
+      #     branch: hoge
+      #     assignees: 'hirotomoyamada'

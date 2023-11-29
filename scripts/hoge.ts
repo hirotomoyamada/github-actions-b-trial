@@ -13,7 +13,7 @@ const main = async () => {
       };
 
       const json = JSON.stringify(data);
-      await writeFile(path.join(process.cwd(), '.fuga', `${name}-${index}.json`), json);
+      await writeFile(path.join(process.cwd(), '.fuga', `${name}-${index + 1}.json`), json);
     }),
   );
 };

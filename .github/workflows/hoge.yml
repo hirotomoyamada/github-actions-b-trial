@@ -15,7 +15,7 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Merge Changelog
+      - name: Merge File
         run: |
           git fetch origin repo-sync/github-actions-a-trial/default
           git merge --no-ff origin/repo-sync/github-actions-a-trial/default -m "Merge repo-sync/github-actions-a-trial/default branch"
